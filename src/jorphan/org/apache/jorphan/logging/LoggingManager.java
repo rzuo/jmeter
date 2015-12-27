@@ -193,7 +193,13 @@ public final class LoggingManager {
         try {
             File logFileAsFile = new File(logFile);
             System.out.println("Writing log file to:"+logFileAsFile.getAbsolutePath());
-            wt = new FileWriter(logFile);
+            /*
+             * Without the second parameter of FileWriter, jmeter.log will be over-write when close jmeter and open it again.
+             * This default behavior is ok when doing some test which do not care about the content of jmeter.log.
+             * But when running a long-term load test using jmeter, the content of jmeter.log will be important when run jmeter again and again.
+             * So in daily work, I changed this behavior to keep the content of jmeter.log even after close and open again of jmeter.
+             */
+            wt = new FileWriter(logFile, true);
         } catch (Exception e) {
             System.out.println(propName + "=" + logFile + " " + e.toString());
             System.out.println("[" + propName + "-> System.out]");
