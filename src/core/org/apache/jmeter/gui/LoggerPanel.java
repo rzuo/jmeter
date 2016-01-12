@@ -20,6 +20,7 @@ package org.apache.jmeter.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Insets;
+import java.awt.Font;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -67,6 +68,10 @@ public class LoggerPanel extends JPanel implements LogTarget {
         this.setLayout(new BorderLayout());
         final JScrollPane areaScrollPane;
         final JTextArea jTextArea;
+        int fontSize = JMeterUtils.getPropDefault("jmeter.loggerpanel.font.size", 0);// $NON-NLS-1$
+        if (fontSize == 0) {
+            fontSize = 15;
+        }
 
         if (JMeterUtils.getPropDefault("loggerpanel.usejsyntaxtext", true)) {
             // JSyntax Text Area
@@ -85,6 +90,7 @@ public class LoggerPanel extends JPanel implements LogTarget {
             jTextArea =  new JTextArea(15, 80);
             areaScrollPane = new JScrollPane(jTextArea);
         }
+        jTextArea.setFont(new Font("Dialog", Font.PLAIN, fontSize));
 
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         areaScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);

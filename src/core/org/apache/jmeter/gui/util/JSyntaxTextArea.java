@@ -18,6 +18,7 @@
 
 package org.apache.jmeter.gui.util;
 
+import java.awt.Font;
 import java.util.Properties;
 
 import org.apache.jmeter.util.JMeterUtils;
@@ -63,6 +64,13 @@ public class JSyntaxTextArea extends RSyntaxTextArea {
      */
     public JSyntaxTextArea(int rows, int cols) {
         this(rows, cols, false);
+
+        int fontSize = JMeterUtils.getPropDefault("jmeter.editor.font.size", 0);// $NON-NLS-1$
+        if (fontSize == 0) {
+            fontSize = 15;
+        }
+
+        this.setFont(new Font("Dialog", Font.PLAIN, fontSize));
     }
 
     /**

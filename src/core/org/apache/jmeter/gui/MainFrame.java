@@ -24,6 +24,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.Font;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -600,6 +601,7 @@ public class MainFrame extends JFrame implements TestStateListener, Remoteable, 
         LoggerPanel loggerPanel = new LoggerPanel();
         loggerPanel.setMinimumSize(new Dimension(0, 100));
         loggerPanel.setPreferredSize(new Dimension(0, 150));
+        //loggerPanel.setFont(new Font("Dialog", Font.PLAIN, 25));
         GuiPackage guiInstance = GuiPackage.getInstance();
         guiInstance.setLoggerPanel(loggerPanel);
         guiInstance.getMenuItemLoggerPanel().getModel().setSelected(DISPLAY_LOGGER_PANEL);
@@ -712,6 +714,12 @@ public class MainFrame extends JFrame implements TestStateListener, Remoteable, 
      */
     private TreeCellRenderer getCellRenderer() {
         DefaultTreeCellRenderer rend = new JMeterCellRenderer();
+        int fontSize = JMeterUtils.getPropDefault("jmeter.lefttree.font.size", 0);// $NON-NLS-1$
+        if (fontSize == 0) {
+            fontSize = 15;
+        }
+
+        rend.setFont(new Font("Dialog", Font.PLAIN, fontSize));
         return rend;
     }
 
