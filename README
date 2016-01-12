@@ -205,14 +205,14 @@ may be subject to export controls on cryptographic software:
 rzuo (rongguo.zuo@gmail.com)  modification details
 -----------------------------
 1.  Add jmeter.log append mode to prevent this log file to be truncated at next startup of jmeter
-	src/jorphan/org/apache/jorphan/logging/LoggingManager.java
+    src/jorphan/org/apache/jorphan/logging/LoggingManager.java
 2.  Add this properties for left tree, logger pannel and script editor font size change individually
-	bin/jmeter.properties
-	  +jmeter.lefttree.font.size=15
-	  +jmeter.loggerpanel.font.size=15
-	  +jmeter.editor.font.size=15
+    bin/jmeter.properties
+      +jmeter.lefttree.font.size=15
+      +jmeter.loggerpanel.font.size=15
+      +jmeter.editor.font.size=15
 
-	src/core/org/apache/jmeter/gui/MainFrame.java
-	src/core/org/apache/jmeter/gui/LoggerPanel.java
-	src/core/org/apache/jmeter/gui/util/JSyntaxTextArea.java
-	
+    src/core/org/apache/jmeter/gui/MainFrame.java
+    src/core/org/apache/jmeter/gui/LoggerPanel.java
+    src/core/org/apache/jmeter/gui/util/JSyntaxTextArea.java
+    
